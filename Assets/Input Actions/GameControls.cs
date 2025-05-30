@@ -101,6 +101,24 @@ namespace Game.Input
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PlantingMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""71c31312-3e07-4d19-b82e-a44e40a3953c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Exit"",
+                    ""type"": ""Button"",
+                    ""id"": ""f9d7a802-2316-4587-abb3-858d90ab9442"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -169,6 +187,50 @@ namespace Game.Input
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67ae5668-d416-419e-a772-e5d74a678aaa"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlantingMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""33629766-f904-4d69-b486-b1d54a09a0f5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PlantingMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b786571b-534c-4739-a0c2-0ac8515574ed"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4b2e732f-5671-4da7-9599-616b773bdb23"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -178,6 +240,8 @@ namespace Game.Input
             // PlayerActionMap
             m_PlayerActionMap = asset.FindActionMap("PlayerActionMap", throwIfNotFound: true);
             m_PlayerActionMap_Move = m_PlayerActionMap.FindAction("Move", throwIfNotFound: true);
+            m_PlayerActionMap_PlantingMode = m_PlayerActionMap.FindAction("PlantingMode", throwIfNotFound: true);
+            m_PlayerActionMap_Exit = m_PlayerActionMap.FindAction("Exit", throwIfNotFound: true);
         }
 
         ~@GameControls()
@@ -259,6 +323,8 @@ namespace Game.Input
         private readonly InputActionMap m_PlayerActionMap;
         private List<IPlayerActionMapActions> m_PlayerActionMapActionsCallbackInterfaces = new List<IPlayerActionMapActions>();
         private readonly InputAction m_PlayerActionMap_Move;
+        private readonly InputAction m_PlayerActionMap_PlantingMode;
+        private readonly InputAction m_PlayerActionMap_Exit;
         /// <summary>
         /// Provides access to input actions defined in input action map "PlayerActionMap".
         /// </summary>
@@ -274,6 +340,14 @@ namespace Game.Input
             /// Provides access to the underlying input action "PlayerActionMap/Move".
             /// </summary>
             public InputAction @Move => m_Wrapper.m_PlayerActionMap_Move;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerActionMap/PlantingMode".
+            /// </summary>
+            public InputAction @PlantingMode => m_Wrapper.m_PlayerActionMap_PlantingMode;
+            /// <summary>
+            /// Provides access to the underlying input action "PlayerActionMap/Exit".
+            /// </summary>
+            public InputAction @Exit => m_Wrapper.m_PlayerActionMap_Exit;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -303,6 +377,12 @@ namespace Game.Input
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+                @PlantingMode.started += instance.OnPlantingMode;
+                @PlantingMode.performed += instance.OnPlantingMode;
+                @PlantingMode.canceled += instance.OnPlantingMode;
+                @Exit.started += instance.OnExit;
+                @Exit.performed += instance.OnExit;
+                @Exit.canceled += instance.OnExit;
             }
 
             /// <summary>
@@ -317,6 +397,12 @@ namespace Game.Input
                 @Move.started -= instance.OnMove;
                 @Move.performed -= instance.OnMove;
                 @Move.canceled -= instance.OnMove;
+                @PlantingMode.started -= instance.OnPlantingMode;
+                @PlantingMode.performed -= instance.OnPlantingMode;
+                @PlantingMode.canceled -= instance.OnPlantingMode;
+                @Exit.started -= instance.OnExit;
+                @Exit.performed -= instance.OnExit;
+                @Exit.canceled -= instance.OnExit;
             }
 
             /// <summary>
@@ -364,6 +450,20 @@ namespace Game.Input
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnMove(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "PlantingMode" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnPlantingMode(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Exit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnExit(InputAction.CallbackContext context);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Game.StateMachineHandling
 
         public Transition(IState to, IPredicate condition)
         {
-            this.to = To;
+            this.to = to;
             this.condition = condition;
         }
     }

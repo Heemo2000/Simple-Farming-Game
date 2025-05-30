@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Game.StateMachineHandling
 {
@@ -9,7 +10,7 @@ namespace Game.StateMachineHandling
         private Dictionary<Type, StateNode> nodes = new Dictionary<Type, StateNode>();
         private HashSet<ITransition> anyTransitions = new HashSet<ITransition>();
 
-        public void Update()
+        public void OnUpdate()
         {
             var transition = GetTransition();
             if (transition != null)
@@ -18,7 +19,7 @@ namespace Game.StateMachineHandling
             current.State?.OnUpdate();
         }
 
-        public void FixedUpdate()
+        public void OnFixedUpdate()
         {
             current.State?.OnFixedUpdate();
         }
@@ -71,9 +72,9 @@ namespace Game.StateMachineHandling
 
         StateNode GetOrAddNode(IState state)
         {
-            var node = nodes.GetValueOrDefault(state.GetType());
+            StateNode node = null;
 
-            if (node == null)
+            if (!nodes.TryGetValue(state.GetType(), out node))
             {
                 node = new StateNode(state);
                 nodes.Add(state.GetType(), node);

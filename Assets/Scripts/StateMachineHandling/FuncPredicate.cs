@@ -4,7 +4,7 @@ namespace Game.StateMachineHandling
 {
     public class FuncPredicate : IPredicate
     {
-        private Func<bool> func;
+        readonly Func<bool> func;
 
         public FuncPredicate(Func<bool> func)
         {
