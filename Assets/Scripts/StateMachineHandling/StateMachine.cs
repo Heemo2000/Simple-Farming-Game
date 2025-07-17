@@ -6,9 +6,15 @@ namespace Game.StateMachineHandling
 {
     public class StateMachine
     {
+        private StateNode previous;
         private StateNode current;
         private Dictionary<Type, StateNode> nodes = new Dictionary<Type, StateNode>();
         private HashSet<ITransition> anyTransitions = new HashSet<ITransition>();
+
+        public override string ToString()
+        {
+            return $"Current: {current?.State.GetType().Name}, Previous: {previous?.State.GetType().Name}";
+        }
 
         public void OnUpdate()
         {
@@ -39,10 +45,15 @@ namespace Game.StateMachineHandling
         {
             if (state == current.State) return;
 
-            var previousState = current.State;
-            var nextState = nodes[state.GetType()].State;
+            previous = current;
 
+            var previousState = previous.State;
+            var nextStateNode = nodes[state.GetType()];
+            var nextState = nextStateNode.State;
+
+            previous?.Exit();
             previousState?.OnExit();
+            nextStateNode?.Enter();
             nextState?.OnEnter();
             current = nodes[state.GetType()];
         }

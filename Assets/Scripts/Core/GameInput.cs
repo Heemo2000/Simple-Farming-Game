@@ -7,11 +7,17 @@ namespace Game.Core
 {
     public class GameInput : MonoBehaviour
     {
+        [SerializeField] private Camera lookCamera;
+        [Min(100.0f)]
+        [SerializeField] private float maxCheckDistance = 100.0f;
+        [SerializeField] private LayerMask checkLayerMask;
+
         private GameControls gameControls;
-        public Action OnEnterPlantMode;
-        public Action OnExitPlantMode;
+        public Action OnStop;
         public Action<Vector2> OnMove;
-        
+        public Action<Vector3> OnPositionClicked;
+
+
         public Vector2 GetMoveInput()
         {
             return gameControls.PlayerActionMap.Move.ReadValue<Vector2>();
@@ -19,35 +25,43 @@ namespace Game.Core
 
         private void OnMovePerformed(InputAction.CallbackContext context)
         {
-            OnMove?.Invoke(context.ReadValue<Vector2>());
+            Vector2 input = context.ReadValue<Vector2>();
+            OnMove?.Invoke(input);
         }
 
-        private void OnExitStarted(InputAction.CallbackContext context)
+        private void OnMoveEnd(InputAction.CallbackContext context)
         {
-            OnExitPlantMode?.Invoke();
+            OnMove?.Invoke(Vector2.zero);
+            OnStop?.Invoke();
         }
 
-        private void OnPlantingModeStarted(InputAction.CallbackContext context)
+        private void OnClick(InputAction.CallbackContext context)
         {
-            OnEnterPlantMode?.Invoke();
+            Vector2 screenPos = gameControls.PlayerActionMap.PointerPos.ReadValue<Vector2>();
+            Ray ray = lookCamera.ScreenPointToRay(screenPos);
+
+            if(Physics.Raycast(ray, out RaycastHit hit, maxCheckDistance, checkLayerMask.value))
+            {
+                OnPositionClicked?.Invoke(hit.point);
+            }
         }
+
 
         private void Awake()
         {
             gameControls = new GameControls();
             gameControls.Enable();
-            gameControls.PlayerActionMap.PlantingMode.started += OnPlantingModeStarted;
-            gameControls.PlayerActionMap.Exit.started += OnExitStarted;
             gameControls.PlayerActionMap.Move.performed += OnMovePerformed;
+            gameControls.PlayerActionMap.Move.canceled += OnMoveEnd;
+            gameControls.PlayerActionMap.Click.started += OnClick;
         }
-        
 
         private void OnDestroy()
         {
             gameControls.Disable();
-            gameControls.PlayerActionMap.PlantingMode.started -= OnPlantingModeStarted;
-            gameControls.PlayerActionMap.Exit.started -= OnExitStarted;
             gameControls.PlayerActionMap.Move.performed -= OnMovePerformed;
+            gameControls.PlayerActionMap.Move.canceled -= OnMoveEnd;
+            gameControls.PlayerActionMap.Click.started -= OnClick;
         }
     }
 }
