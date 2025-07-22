@@ -142,6 +142,7 @@ namespace Game.GameplayHandling
             DOTween.Init();
             stateMachine.SetState(playerState);
             plantingBtn.onClick.AddListener(ChangeToPlantingState);
+            Application.targetFrameRate = 60;
         }
 
         // Update is called once per frame
