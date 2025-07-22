@@ -1,49 +1,59 @@
+using UnityEngine;
 using Game.Core;
 using Game.StateMachineHandling;
-using Game.CharacterHandling;
-using UnityEngine;
+using Game.CameraHandling;
+using Unity.Cinemachine;
+using Game.UI;
+
 
 
 namespace Game.GameplayHandling
 {
     public class PlantingState : IState
     {
-        private Human playerHuman;
         private CropManager cropManager;
         private CropSelector cropSelector;
+        private CameraManager cameraManager;
+        private CinemachineCamera topDownCamera;
+        private UIManager uiManager;
+        private Page mainPanel;
+        private Page plantingPanel;
         private GameInput gameInput;
-        private Vector2 moveInput = Vector2.zero;
 
-        public PlantingState(Human playerHuman, CropManager cropManager, CropSelector cropSelector, GameInput gameInput)
+        public PlantingState(CropManager cropManager, CropSelector cropSelector, CameraManager cameraManager, CinemachineCamera topDownCamera, UIManager uiManager, Page mainPanel, Page plantingPanel, GameInput gameInput)
         {
-            this.playerHuman = playerHuman;
             this.cropManager = cropManager;
             this.cropSelector = cropSelector;
+            this.cameraManager = cameraManager;
+            this.topDownCamera = topDownCamera;
+            this.uiManager = uiManager;
+            this.mainPanel = mainPanel;
+            this.plantingPanel = plantingPanel;
             this.gameInput = gameInput;
         }
 
         public void OnEnter()
         {
-            playerHuman.HandleMovement(Vector2.zero);
             this.gameInput.OnPositionClicked += SpawnSelectedCrop;
+            this.cameraManager.MakeCameraImportant(this.topDownCamera);
+            this.mainPanel.exitOnNewPagePush = true;
+            this.uiManager.PushPage(this.plantingPanel);
         }
 
         public void OnUpdate()
         {
-            Debug.Log("Now, in Planting State.");
-            moveInput = gameInput.GetMoveInput();
+            
         }
 
         public void OnFixedUpdate()
         {
-            playerHuman.HandleMovement(moveInput);
+
         }
 
         public void OnLateUpdate()
         {
             
         }
-
 
         public void OnExit()
         {

@@ -21,11 +21,11 @@ namespace Game.GameplayHandling
         void Start()
         {
             selectedCropType = CropType.Broccoli;
-            var cropTypesValues = Enum.GetValues(typeof(CropType));
-            for (int i = 0; i < cropTypesValues.Length; i++)
-            {
-                buttons[i].onClick.AddListener(() => SelectCropType((CropType)cropTypesValues.GetValue(i)));
-            }
+            buttons[0].onClick.AddListener(() => SelectCropType(CropType.Broccoli));
+            buttons[1].onClick.AddListener(() => SelectCropType(CropType.Mushroom));
+            buttons[2].onClick.AddListener(() => SelectCropType(CropType.Cabbage));
+            buttons[3].onClick.AddListener(() => SelectCropType(CropType.Carrot));
+
         }
 
         private void OnDestroy()

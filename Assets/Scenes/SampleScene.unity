@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 170052299}
   - component: {fileID: 170052301}
   - component: {fileID: 170052300}
+  - component: {fileID: 170052302}
   m_Layer: 5
   m_Name: Main Panel
   m_TagString: Untagged
@@ -195,6 +196,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170052298}
   m_CullTransparentMesh: 1
+--- !u!114 &170052302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 170052298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da300026f399f034a91507c79c306fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeed: 1
+  exitOnNewPagePush: 1
+  entryMode: 2
+  entryDirection: 4
+  exitMode: 2
+  exitDirection: 4
+  OnPushAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostPushAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPrePopAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostPopAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &263185304
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +373,8 @@ GameObject:
   - component: {fileID: 274008940}
   - component: {fileID: 274008942}
   - component: {fileID: 274008941}
+  - component: {fileID: 274008943}
+  - component: {fileID: 274008944}
   m_Layer: 5
   m_Name: Buy Panel
   m_TagString: Untagged
@@ -408,6 +441,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274008939}
   m_CullTransparentMesh: 1
+--- !u!114 &274008943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274008939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1601ff8f6a8e449a7fa1ea5bf27611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1208292129}
+  - {fileID: 1871302802}
+  - {fileID: 1043321529}
+  - {fileID: 1843137046}
+--- !u!114 &274008944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274008939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da300026f399f034a91507c79c306fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeed: 1
+  exitOnNewPagePush: 0
+  entryMode: 2
+  entryDirection: 4
+  exitMode: 2
+  exitDirection: 4
+  OnPushAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostPushAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPrePopAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostPopAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &308268779
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +932,7 @@ GameObject:
   - component: {fileID: 351197761}
   - component: {fileID: 351197760}
   m_Layer: 0
-  m_Name: Top Player Camera
+  m_Name: Top View Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1488,6 +1568,8 @@ GameObject:
   - component: {fileID: 558069219}
   - component: {fileID: 558069221}
   - component: {fileID: 558069220}
+  - component: {fileID: 558069222}
+  - component: {fileID: 558069223}
   m_Layer: 5
   m_Name: Planting Panel
   m_TagString: Untagged
@@ -1554,6 +1636,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558069218}
   m_CullTransparentMesh: 1
+--- !u!114 &558069222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558069218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a1601ff8f6a8e449a7fa1ea5bf27611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 1747411623}
+  - {fileID: 2060241586}
+  - {fileID: 1114870089}
+  - {fileID: 1675530578}
+--- !u!114 &558069223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 558069218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da300026f399f034a91507c79c306fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSpeed: 1
+  exitOnNewPagePush: 0
+  entryMode: 2
+  entryDirection: 4
+  exitMode: 2
+  exitDirection: 4
+  OnPushAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostPushAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPrePopAction:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostPopAction:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &605668716
 GameObject:
   m_ObjectHideFlags: 0
@@ -3755,6 +3884,7 @@ GameObject:
   - component: {fileID: 1646974097}
   - component: {fileID: 1646974096}
   - component: {fileID: 1646974095}
+  - component: {fileID: 1646974099}
   m_Layer: 5
   m_Name: Game Canvas
   m_TagString: Untagged
@@ -3847,6 +3977,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1646974099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646974094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b19cf3a5c09ca534d95ff8c724529efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialPage: {fileID: 170052302}
+  showPageCount: 0
 --- !u!1 &1674753725
 GameObject:
   m_ObjectHideFlags: 0
@@ -3857,6 +4001,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1674753727}
   - component: {fileID: 1674753726}
+  - component: {fileID: 1674753729}
+  - component: {fileID: 1674753728}
   m_Layer: 0
   m_Name: Game Controller
   m_TagString: Untagged
@@ -3877,14 +4023,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plantingBtn: {fileID: 1269022156}
-  wateringBtn: {fileID: 0}
-  harvestBtn: {fileID: 0}
-  buyBtn: {fileID: 0}
-  wateringTime: 3
-  harvestTime: 3
+  wateringBtn: {fileID: 1961867560}
+  harvestBtn: {fileID: 1881832471}
+  buyBtn: {fileID: 942179376}
+  goBackFromPlantingBtn: {fileID: 360679384}
+  goBackFromBuyBtn: {fileID: 1027164675}
+  uiManager: {fileID: 1646974099}
+  mainPanel: {fileID: 170052302}
+  plantingPanel: {fileID: 558069223}
+  buyPanel: {fileID: 274008944}
+  wateringTime: 10
+  harvestTime: 10
+  wateringRadius: 4
+  wateringInterval: 0.1
+  harvestingRadius: 3.5
+  harvestingInterval: 0.1
   gameInput: {fileID: 1449757487}
   playerHuman: {fileID: 1343156738}
-  grid: {fileID: 0}
+  cropManager: {fileID: 1674753729}
+  plantingCropSelector: {fileID: 558069222}
+  buyingCropSelector: {fileID: 274008943}
+  cameraManager: {fileID: 1674753728}
+  playerCamera: {fileID: 2113565080}
+  topViewCamera: {fileID: 351197762}
+  cropLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!4 &1674753727
 Transform:
   m_ObjectHideFlags: 0
@@ -3900,6 +4064,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1674753728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674753725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde7bd3f815fdfa44bc73314312bb521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialCamera: {fileID: 2113565080}
+--- !u!114 &1674753729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674753725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a9f9ff1c5d1de49953dbfc990d6843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolsData:
+  - prefab: {fileID: 2249789864411532481, guid: e516fca9b0b1d65438a00c22b9853fc2, type: 3}
+    count: 20
+  - prefab: {fileID: 5317532558892699063, guid: 31d13b39f65354e4aa6f67d4efbb7403, type: 3}
+    count: 20
+  - prefab: {fileID: -9029871059633651028, guid: e2049e348ea3c9a4c943726bd545f0a2, type: 3}
+    count: 20
+  - prefab: {fileID: -1118924557502668969, guid: 64db2e5394e8e2e42802a53543a7addb, type: 3}
+    count: 20
+  grid: {fileID: 659859168}
 --- !u!1 &1675530576
 GameObject:
   m_ObjectHideFlags: 0

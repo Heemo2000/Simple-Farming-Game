@@ -15,7 +15,7 @@ namespace Game.StateMachineHandling
         public TimePredicate(float duration, Func<bool> startCondition, Action onTimerEnd = null)
         {
             this.duration = duration;
-            this.startCondition = startCondition ?? throw new ArgumentNullException(nameof(startCondition));
+            this.startCondition = startCondition;
             this.onTimerEnd = onTimerEnd;
         }
 
@@ -30,7 +30,6 @@ namespace Game.StateMachineHandling
             if (isTimerRunning)
             {
                 timer -= Time.deltaTime;
-
                 if (timer <= 0f)
                 {
                     isTimerRunning = false;

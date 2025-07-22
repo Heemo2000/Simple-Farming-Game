@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5981355661829762054}
   - component: {fileID: -9029871059633651028}
-  m_Layer: 0
+  - component: {fileID: 4021489071583251496}
+  m_Layer: 7
   m_Name: Carrot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,6 +59,27 @@ MonoBehaviour:
     graphics: {fileID: 2299339324701340464}
   punchAnimScale: 1.5
   punchAnimDuration: 0.3
+--- !u!65 &4021489071583251496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527741714111591148}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.0000002, y: 1, z: 2.0000002}
+  m_Center: {x: 0, y: -1.3, z: 0}
 --- !u!1001 &4086402087642355223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70,13 +92,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farm_Crop_Carrot_Step_02
       objectReference: {fileID: 0}
+    - target: {fileID: 3856223855077511753, guid: 1a0fc3072ca96ec4283af64115b956a1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4526081920822937843, guid: 1a0fc3072ca96ec4283af64115b956a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4526081920822937843, guid: 1a0fc3072ca96ec4283af64115b956a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.645
       objectReference: {fileID: 0}
     - target: {fileID: 4526081920822937843, guid: 1a0fc3072ca96ec4283af64115b956a1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -137,13 +163,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farm_Crop_Carrot_Step_01
       objectReference: {fileID: 0}
+    - target: {fileID: 2582875128571546930, guid: f4ea6b9d24fd2164795278fa98ffb6c1, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2923935198200633224, guid: f4ea6b9d24fd2164795278fa98ffb6c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2923935198200633224, guid: f4ea6b9d24fd2164795278fa98ffb6c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.645
       objectReference: {fileID: 0}
     - target: {fileID: 2923935198200633224, guid: f4ea6b9d24fd2164795278fa98ffb6c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -204,13 +234,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3D_Tile_Ground_04A
       objectReference: {fileID: 0}
+    - target: {fileID: 421205821511074294, guid: d66459240d7390a479a22c4ba2184420, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1050390782911896396, guid: d66459240d7390a479a22c4ba2184420, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1050390782911896396, guid: d66459240d7390a479a22c4ba2184420, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: -1.8
       objectReference: {fileID: 0}
     - target: {fileID: 1050390782911896396, guid: d66459240d7390a479a22c4ba2184420, type: 3}
       propertyPath: m_LocalPosition.z
@@ -266,13 +300,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Farm_Crop_Carrot_Step_03
       objectReference: {fileID: 0}
+    - target: {fileID: 8204887017581438627, guid: 256da108ea4933f498908e467e4c1fc9, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8833333386343332889, guid: 256da108ea4933f498908e467e4c1fc9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8833333386343332889, guid: 256da108ea4933f498908e467e4c1fc9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.645
       objectReference: {fileID: 0}
     - target: {fileID: 8833333386343332889, guid: 256da108ea4933f498908e467e4c1fc9, type: 3}
       propertyPath: m_LocalPosition.z

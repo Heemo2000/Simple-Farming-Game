@@ -18,6 +18,8 @@ namespace Game.GameplayHandling
         public void SpawnCrop(CropType cropType, Vector3 position)
         {
             Vector3Int cellPosition = grid.WorldToCell(position);
+            
+            Vector3 precisePosition = grid.GetCellCenterWorld(cellPosition);
             if(Contains(cellPosition))
             {
                 return;
@@ -26,7 +28,7 @@ namespace Game.GameplayHandling
             var pool = cropPools[cropType];
             var crop = pool.Get();
             crop.CropPool = pool;
-            crop.transform.position = position;
+            crop.transform.position = precisePosition;
             AddCropData(crop.Type, cellPosition);
         }
 
@@ -39,7 +41,7 @@ namespace Game.GameplayHandling
             }
             var pool = crop.CropPool;
             pool.ReturnToPool(crop);
-            RemoveCropData(grid.WorldToCell(grid.transform.position));
+            RemoveCropData(cellPosition);
         }
 
         private void AddCropData(CropType type, Vector3Int position)

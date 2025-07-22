@@ -3,10 +3,12 @@ using UnityEngine;
 using DG.Tweening;
 using Game.Core;
 using Game.ObjectPoolHandling;
+using System;
+using System.Collections.Generic;
 
 namespace Game.GameplayHandling
 {
-    public class Crop : MonoBehaviour
+    public class Crop : MonoBehaviour, IEquatable<Crop>
     {
         [SerializeField]
         private CropType type = CropType.None;
@@ -88,7 +90,7 @@ namespace Game.GameplayHandling
 
             isProcessing = false;
 
-            if (currentStageIndex < stages.Length)
+            if (currentStageIndex < stages.Length - 1)
             {
                 state = CropState.Growing;
             }
@@ -115,6 +117,36 @@ namespace Game.GameplayHandling
                     stage.graphics.SetActive(false);
                 }
             }
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Crop);
+        }
+
+        public bool Equals(Crop other)
+        {
+            return other is not null &&
+                   base.Equals(other) &&
+                   type == other.type &&
+                   EqualityComparer<CropGrowthStageData[]>.Default.Equals(stages, other.stages) &&
+                   punchAnimScale == other.punchAnimScale &&
+                   punchAnimDuration == other.punchAnimDuration &&
+                   EqualityComparer<ObjectPool<Crop>>.Default.Equals(cropPool, other.cropPool) &&
+                   currentStageIndex == other.currentStageIndex &&
+                   EqualityComparer<Coroutine>.Default.Equals(growCoroutine, other.growCoroutine) &&
+                   isProcessing == other.isProcessing &&
+                   state == other.state;
+        }
+
+        public override int GetHashCode()
+        {
+            HashCode hash = new HashCode();
+            hash.Add(base.GetHashCode());
+            hash.Add(punchAnimScale);
+            hash.Add(punchAnimDuration);
+            hash.Add(gameObject.GetInstanceID());
+            return hash.ToHashCode();
         }
     }
 }
