@@ -57,7 +57,7 @@ MonoBehaviour:
     graphics: {fileID: 1748265033813186574}
   - time: 3.5
     graphics: {fileID: 6948634626240293732}
-  punchAnimScale: 2
+  punchAnimScale: 1.2
   punchAnimDuration: 0.3
 --- !u!65 &6513629633599720955
 BoxCollider:
