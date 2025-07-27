@@ -19,17 +19,21 @@ namespace Game.GameplayHandling
         private Page mainPanel;
         private Page plantingPanel;
         private GameInput gameInput;
-
-        public PlantingState(CropManager cropManager, CropSelector cropSelector, CameraManager cameraManager, CinemachineCamera topDownCamera, UIManager uiManager, Page mainPanel, Page plantingPanel, GameInput gameInput)
+        private Inventory inventory;
+        private GameObject gridGraphic;
+        
+        public PlantingState(GameplayController controller)
         {
-            this.cropManager = cropManager;
-            this.cropSelector = cropSelector;
-            this.cameraManager = cameraManager;
-            this.topDownCamera = topDownCamera;
-            this.uiManager = uiManager;
-            this.mainPanel = mainPanel;
-            this.plantingPanel = plantingPanel;
-            this.gameInput = gameInput;
+            this.cropManager = controller.CropManager;
+            this.cropSelector = controller.PlantingCropSelector;
+            this.cameraManager = controller.CameraManager;
+            this.topDownCamera = controller.TopViewCamera;
+            this.uiManager = controller.UIManager;
+            this.mainPanel = controller.MainPanel;
+            this.plantingPanel = controller.PlantingPanel;
+            this.gameInput = controller.GameInput;
+            this.inventory = controller.Inventory;
+            this.gridGraphic = controller.GridGraphic;
         }
 
         public void OnEnter()
@@ -38,6 +42,8 @@ namespace Game.GameplayHandling
             this.cameraManager.MakeCameraImportant(this.topDownCamera);
             this.mainPanel.exitOnNewPagePush = true;
             this.uiManager.PushPage(this.plantingPanel);
+            this.inventory.LoadData();
+            this.gridGraphic.SetActive(true);
         }
 
         public void OnUpdate()
@@ -58,11 +64,19 @@ namespace Game.GameplayHandling
         public void OnExit()
         {
             this.gameInput.OnPositionClicked -= SpawnSelectedCrop;
+            this.gridGraphic.SetActive(false);
         }
 
         private void SpawnSelectedCrop(Vector3 position)
         {
-            cropManager.SpawnCrop(cropSelector.SelectedCropType, position);
+            CropType selectedCropType = cropSelector.SelectedCropType;
+            int count = this.inventory.GetCropCount(selectedCropType);
+            
+            if(count > 0)
+            {
+                cropManager.SpawnCrop(cropSelector.SelectedCropType, position);
+                this.inventory.DecreaseCropCount(selectedCropType);
+            }
         }
     }
 }

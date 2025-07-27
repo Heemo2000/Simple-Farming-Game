@@ -54,6 +54,9 @@ namespace Game.GameplayHandling
         [SerializeField] private CinemachineCamera playerCamera;
         [SerializeField] private CinemachineCamera topViewCamera;
         [SerializeField] private LayerMask cropLayerMask;
+        [SerializeField] private Inventory inventory;
+        [SerializeField] private BuyManager buyManager;
+        [SerializeField] private GameObject gridGraphic;
 
         private StateMachine stateMachine;
 
@@ -81,6 +84,12 @@ namespace Game.GameplayHandling
         public UIManager UIManager { get => uiManager; }
         public Page WateringPanel { get => wateringPanel;}
         public Page HarvestingPanel { get => harvestingPanel;}
+        public Inventory Inventory { get => inventory; }
+        public Page MainPanel { get => mainPanel;}
+        public Page PlantingPanel { get => plantingPanel; }
+        public Page BuyPanel { get => buyPanel;}
+        public GameObject GridGraphic { get => gridGraphic;}
+        public BuyManager BuyManager { get => buyManager;}
 
         private void ChangeToNormalState()
         {
@@ -114,11 +123,11 @@ namespace Game.GameplayHandling
         {
             currentState = GameplayStates.Normal;
             stateMachine = new StateMachine();
-            playerState = new NormalState(playerHuman, cameraManager, playerCamera, uiManager, mainPanel, gameInput);
-            plantingState = new PlantingState(cropManager, plantingCropSelector, cameraManager, topViewCamera, uiManager, mainPanel, plantingPanel, gameInput);
+            playerState = new NormalState(this);
+            plantingState = new PlantingState(this);
             wateringState = new WateringState(this);
             harvestState = new HarvestState(this);
-            buyState = new BuyState(buyingCropSelector, uiManager, mainPanel, buyPanel);
+            buyState = new BuyState(this);
 
             stateMachine.AddTransition(playerState, plantingState, new FuncPredicate(() => currentState == GameplayStates.Planting));
             stateMachine.AddAnyTransition(playerState, new FuncPredicate(() => currentState == GameplayStates.Normal));
@@ -141,7 +150,6 @@ namespace Game.GameplayHandling
 
             DOTween.Init();
             stateMachine.SetState(playerState);
-            plantingBtn.onClick.AddListener(ChangeToPlantingState);
             Application.targetFrameRate = 60;
         }
 

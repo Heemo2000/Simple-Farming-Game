@@ -16,17 +16,19 @@ namespace Game.GameplayHandling
         private UIManager uiManager;
         private Page mainPanel;
         private GameInput input;
+        private GameObject gridGraphic;
 
 
         private Vector2 moveInput;
-        public NormalState(Human playerHuman, CameraManager cameraManager, CinemachineCamera playerCamera, UIManager uiManager, Page mainPanel, GameInput input)
+        public NormalState(GameplayController controller)
         {
-            this.playerHuman = playerHuman;
-            this.cameraManager = cameraManager;
-            this.playerCamera = playerCamera;
-            this.uiManager = uiManager;
-            this.mainPanel = mainPanel;
-            this.input = input;
+            this.playerHuman = controller.PlayerHuman;
+            this.cameraManager = controller.CameraManager;
+            this.playerCamera = controller.PlayerCamera;
+            this.uiManager = controller.UIManager;
+            this.mainPanel = controller.MainPanel;
+            this.input = controller.GameInput;
+            this.gridGraphic = controller.GridGraphic;
         }
 
         public void OnEnter()
@@ -37,6 +39,7 @@ namespace Game.GameplayHandling
             {
                 this.uiManager.PopPage();
             }
+            this.gridGraphic.SetActive(false);
         }
         public void OnUpdate()
         {

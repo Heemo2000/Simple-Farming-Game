@@ -7,8 +7,6 @@ namespace Game.UI
     public class RectTransformTilter : MonoBehaviour
     {
         [Min(0.1f)]
-        [SerializeField] private float tiltingSpeed = 10.0f;
-        [Min(0.1f)]
         [SerializeField] private float tiltingDuration = 2.0f;
         private RectTransform rectTransform;
 
@@ -17,7 +15,7 @@ namespace Game.UI
             rectTransform.rotation = Quaternion.identity;
             while(true)
             {
-                var tween = rectTransform.DOShakeRotation(tiltingDuration, tiltingSpeed, 10, 30, true, ShakeRandomnessMode.Harmonic);
+                var tween = rectTransform.DOPunchRotation(Vector3.forward * 180.0f, tiltingDuration, 5, 5.0f);
                 yield return tween.WaitForCompletion();
             }
         }

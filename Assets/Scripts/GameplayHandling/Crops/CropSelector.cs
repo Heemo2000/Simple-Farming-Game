@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 namespace Game.GameplayHandling
 {
+    [System.Serializable]
+    public class CropSelectorData
+    {
+        public CropType cropType;
+        public Button selectButton;
+    }
+
     public class CropSelector : MonoBehaviour
     {
-        [SerializeField] private Button[] buttons;
+        [SerializeField] private CropSelectorData[] selectData;
 
         private CropType selectedCropType = CropType.None;
         public CropType SelectedCropType { get => selectedCropType; }
@@ -21,18 +28,19 @@ namespace Game.GameplayHandling
         void Start()
         {
             selectedCropType = CropType.Broccoli;
-            buttons[0].onClick.AddListener(() => SelectCropType(CropType.Broccoli));
-            buttons[1].onClick.AddListener(() => SelectCropType(CropType.Mushroom));
-            buttons[2].onClick.AddListener(() => SelectCropType(CropType.Cabbage));
-            buttons[3].onClick.AddListener(() => SelectCropType(CropType.Carrot));
 
+            foreach (var data in selectData)
+            {
+                CropType type = data.cropType;
+                data.selectButton.onClick.AddListener(() => SelectCropType(type));
+            }
         }
 
         private void OnDestroy()
         {
-            for (int i = 0; i < buttons.Length; i++)
+            foreach (var data in selectData)
             {
-                buttons[i].onClick.RemoveAllListeners();
+                data.selectButton.onClick.RemoveAllListeners();
             }
         }
     }

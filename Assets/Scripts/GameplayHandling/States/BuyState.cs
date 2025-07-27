@@ -9,19 +9,22 @@ namespace Game.GameplayHandling
         private UIManager uiManager;
         private Page mainPanel;
         private Page buyPanel;
+        private BuyManager buyManager;
 
-        public BuyState(CropSelector cropSelector, UIManager uiManager, Page mainPanel, Page buyPanel)
+        public BuyState(GameplayController controller)
         {
-            this.cropSelector = cropSelector;
-            this.uiManager = uiManager;
-            this.mainPanel = mainPanel;
-            this.buyPanel = buyPanel;
+            this.cropSelector = controller.BuyingCropSelector;
+            this.uiManager = controller.UIManager;
+            this.mainPanel = controller.MainPanel;
+            this.buyPanel = controller.BuyPanel;
+            this.buyManager = controller.BuyManager;
         }
 
         public void OnEnter()
         {
             this.mainPanel.exitOnNewPagePush = true;
             this.uiManager.PushPage(buyPanel);
+            this.buyManager.LoadData();
         }
 
         public void OnUpdate()
