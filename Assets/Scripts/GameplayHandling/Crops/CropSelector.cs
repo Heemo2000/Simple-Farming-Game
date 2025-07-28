@@ -1,7 +1,7 @@
-using Game.GameplayHandling;
-using System;
 using UnityEngine;
-using UnityEngine.UI;
+using Game.UI;
+using System.Collections;
+using Game.Core;
 
 namespace Game.GameplayHandling
 {
@@ -9,7 +9,7 @@ namespace Game.GameplayHandling
     public class CropSelectorData
     {
         public CropType cropType;
-        public Button selectButton;
+        public HoverButton selectButton;
     }
 
     public class CropSelector : MonoBehaviour
@@ -17,11 +17,20 @@ namespace Game.GameplayHandling
         [SerializeField] private CropSelectorData[] selectData;
 
         private CropType selectedCropType = CropType.None;
+        private bool isInsideButton = false;
+
         public CropType SelectedCropType { get => selectedCropType; }
+        public bool IsInsideButton { get => isInsideButton;}
 
         private void SelectCropType(CropType cropType)
         {
             selectedCropType = cropType;
+            isInsideButton = true;
+        }
+
+        private void MakeIsInsideBoolFalse()
+        {
+            isInsideButton = false;
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,7 +41,8 @@ namespace Game.GameplayHandling
             foreach (var data in selectData)
             {
                 CropType type = data.cropType;
-                data.selectButton.onClick.AddListener(() => SelectCropType(type));
+                data.selectButton.OnHover.AddListener(() => SelectCropType(type));
+                data.selectButton.OnHoverExit.AddListener(MakeIsInsideBoolFalse);
             }
         }
 
@@ -40,7 +50,8 @@ namespace Game.GameplayHandling
         {
             foreach (var data in selectData)
             {
-                data.selectButton.onClick.RemoveAllListeners();
+                data.selectButton.OnHover.RemoveAllListeners();
+                data.selectButton.OnHoverExit.RemoveAllListeners();
             }
         }
     }

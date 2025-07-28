@@ -605,13 +605,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectData:
   - cropType: 0
-    selectButton: {fileID: 1747411623}
+    selectButton: {fileID: 1208292134}
   - cropType: 1
-    selectButton: {fileID: 2060241586}
+    selectButton: {fileID: 1871302807}
   - cropType: 2
-    selectButton: {fileID: 1114870089}
+    selectButton: {fileID: 1043321534}
   - cropType: 3
-    selectButton: {fileID: 1675530578}
+    selectButton: {fileID: 1843137051}
 --- !u!114 &274008944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,6 +840,7 @@ GameObject:
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
+  - component: {fileID: 330585549}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -997,6 +998,22 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &330585549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 32
+  m_MaxRayIntersections: 1
 --- !u!1 &332451320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1910,7 +1927,6 @@ GameObject:
   - component: {fileID: 558069220}
   - component: {fileID: 558069222}
   - component: {fileID: 558069223}
-  - component: {fileID: 558069224}
   m_Layer: 5
   m_Name: Planting Panel
   m_TagString: Untagged
@@ -1991,13 +2007,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectData:
   - cropType: 0
-    selectButton: {fileID: 1747411623}
+    selectButton: {fileID: 1747411627}
   - cropType: 1
-    selectButton: {fileID: 2060241586}
+    selectButton: {fileID: 2060241590}
   - cropType: 2
-    selectButton: {fileID: 1114870089}
+    selectButton: {fileID: 1114870093}
   - cropType: 3
-    selectButton: {fileID: 1675530578}
+    selectButton: {fileID: 1675530582}
 --- !u!114 &558069223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2028,27 +2044,6 @@ MonoBehaviour:
   OnPostPopAction:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &558069224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 558069218}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d0daeb9b22faf24198da3b6f1e57d0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryUIData:
-  - cropType: 0
-    cropUI: {fileID: 1747411626}
-  - cropType: 1
-    cropUI: {fileID: 2060241589}
-  - cropType: 2
-    cropUI: {fileID: 1114870092}
-  - cropType: 3
-    cropUI: {fileID: 1675530581}
 --- !u!1 &605668716
 GameObject:
   m_ObjectHideFlags: 0
@@ -2707,6 +2702,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735073022}
   m_CullTransparentMesh: 1
+--- !u!1 &777322460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777322463}
+  - component: {fileID: 777322462}
+  - component: {fileID: 777322461}
+  m_Layer: 0
+  m_Name: Buying UI Handling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &777322461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777322460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791f1f19918578f45b34c40ebdd998de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buyingUIData:
+  - cropType: 0
+    cropUI: {fileID: 1208292132}
+  - cropType: 1
+    cropUI: {fileID: 1871302805}
+  - cropType: 2
+    cropUI: {fileID: 1043321532}
+  - cropType: 3
+    cropUI: {fileID: 1843137049}
+--- !u!114 &777322462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777322460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d0daeb9b22faf24198da3b6f1e57d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUIData:
+  - cropType: 0
+    cropUI: {fileID: 1208292133}
+  - cropType: 1
+    cropUI: {fileID: 1871302806}
+  - cropType: 2
+    cropUI: {fileID: 1043321533}
+  - cropType: 3
+    cropUI: {fileID: 1843137050}
+--- !u!4 &777322463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777322460}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &793407114
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,6 +3266,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 944145580}
   m_CullTransparentMesh: 1
+--- !u!1 &972486849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 972486851}
+  - component: {fileID: 972486850}
+  m_Layer: 0
+  m_Name: Planting UI Handling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &972486850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972486849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d0daeb9b22faf24198da3b6f1e57d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryUIData:
+  - cropType: 0
+    cropUI: {fileID: 1747411626}
+  - cropType: 1
+    cropUI: {fileID: 2060241589}
+  - cropType: 2
+    cropUI: {fileID: 1114870092}
+  - cropType: 3
+    cropUI: {fileID: 1675530581}
+--- !u!4 &972486851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 972486849}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &999042676
 GameObject:
   m_ObjectHideFlags: 0
@@ -3415,6 +3538,9 @@ GameObject:
   - component: {fileID: 1043321531}
   - component: {fileID: 1043321530}
   - component: {fileID: 1043321529}
+  - component: {fileID: 1043321533}
+  - component: {fileID: 1043321532}
+  - component: {fileID: 1043321534}
   m_Layer: 5
   m_Name: Carrot
   m_TagString: Untagged
@@ -3526,6 +3652,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043321527}
   m_CullTransparentMesh: 1
+--- !u!114 &1043321532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043321527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5085e8cce037a74f88e3c53a5d06c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceText: {fileID: 1382269606}
+--- !u!114 &1043321533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043321527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a14569f87b7d74baf280537c2b9b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countUI: {fileID: 2132042241}
+--- !u!114 &1043321534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043321527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c872a1a884fbaf248b8f183696b0d50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1114870087
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,6 +3706,7 @@ GameObject:
   - component: {fileID: 1114870090}
   - component: {fileID: 1114870089}
   - component: {fileID: 1114870092}
+  - component: {fileID: 1114870093}
   m_Layer: 5
   m_Name: Carrot
   m_TagString: Untagged
@@ -3662,6 +3830,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countUI: {fileID: 1902920986}
+--- !u!114 &1114870093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114870087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c872a1a884fbaf248b8f183696b0d50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1128566340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3824,6 +4007,9 @@ GameObject:
   - component: {fileID: 1208292131}
   - component: {fileID: 1208292130}
   - component: {fileID: 1208292129}
+  - component: {fileID: 1208292133}
+  - component: {fileID: 1208292132}
+  - component: {fileID: 1208292134}
   m_Layer: 5
   m_Name: Broccoli
   m_TagString: Untagged
@@ -3935,6 +4121,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208292127}
   m_CullTransparentMesh: 1
+--- !u!114 &1208292132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208292127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5085e8cce037a74f88e3c53a5d06c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceText: {fileID: 263185306}
+--- !u!114 &1208292133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208292127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a14569f87b7d74baf280537c2b9b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countUI: {fileID: 434817619}
+--- !u!114 &1208292134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208292127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c872a1a884fbaf248b8f183696b0d50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1227553959
 GameObject:
   m_ObjectHideFlags: 0
@@ -5271,6 +5498,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   inventory: {fileID: 1674753730}
+  buyManager: {fileID: 1674753731}
   gridGraphic: {fileID: 324811736}
 --- !u!4 &1674753727
 Transform:
@@ -5346,7 +5574,19 @@ MonoBehaviour:
   OnCropDataModified:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 972486850}
+        m_TargetAssemblyTypeName: Game.UI.InventoryUI, Assembly-CSharp
+        m_MethodName: SetCropCount
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 777322462}
         m_TargetAssemblyTypeName: Game.UI.InventoryUI, Assembly-CSharp
         m_MethodName: SetCropCount
         m_Mode: 0
@@ -5382,7 +5622,19 @@ MonoBehaviour:
     price: 20
   OnCropMoneyDataModified:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 777322461}
+        m_TargetAssemblyTypeName: Game.UI.BuyingUI, Assembly-CSharp
+        m_MethodName: SetPriceText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnTotalMoneyModified:
     m_PersistentCalls:
       m_Calls: []
@@ -5399,6 +5651,7 @@ GameObject:
   - component: {fileID: 1675530579}
   - component: {fileID: 1675530578}
   - component: {fileID: 1675530581}
+  - component: {fileID: 1675530582}
   m_Layer: 5
   m_Name: Mushroom
   m_TagString: Untagged
@@ -5522,6 +5775,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countUI: {fileID: 1804695592}
+--- !u!114 &1675530582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675530576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c872a1a884fbaf248b8f183696b0d50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1699792494
 GameObject:
   m_ObjectHideFlags: 0
@@ -5686,6 +5954,7 @@ GameObject:
   - component: {fileID: 1747411624}
   - component: {fileID: 1747411623}
   - component: {fileID: 1747411626}
+  - component: {fileID: 1747411627}
   m_Layer: 5
   m_Name: Broccoli
   m_TagString: Untagged
@@ -5809,6 +6078,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countUI: {fileID: 2141544697}
+--- !u!114 &1747411627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747411621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c872a1a884fbaf248b8f183696b0d50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1789568350
 GameObject:
   m_ObjectHideFlags: 0
@@ -6264,6 +6548,9 @@ GameObject:
   - component: {fileID: 1843137048}
   - component: {fileID: 1843137047}
   - component: {fileID: 1843137046}
+  - component: {fileID: 1843137050}
+  - component: {fileID: 1843137049}
+  - component: {fileID: 1843137051}
   m_Layer: 5
   m_Name: Mushroom
   m_TagString: Untagged
@@ -6375,6 +6662,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843137044}
   m_CullTransparentMesh: 1
+--- !u!114 &1843137049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843137044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5085e8cce037a74f88e3c53a5d06c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceText: {fileID: 422365712}
+--- !u!114 &1843137050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843137044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a14569f87b7d74baf280537c2b9b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countUI: {fileID: 722296825}
+--- !u!114 &1843137051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843137044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c872a1a884fbaf248b8f183696b0d50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1849792947
 GameObject:
   m_ObjectHideFlags: 0
@@ -6538,6 +6866,9 @@ GameObject:
   - component: {fileID: 1871302804}
   - component: {fileID: 1871302803}
   - component: {fileID: 1871302802}
+  - component: {fileID: 1871302806}
+  - component: {fileID: 1871302805}
+  - component: {fileID: 1871302807}
   m_Layer: 5
   m_Name: Cabbage
   m_TagString: Untagged
@@ -6649,6 +6980,47 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871302800}
   m_CullTransparentMesh: 1
+--- !u!114 &1871302805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871302800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5085e8cce037a74f88e3c53a5d06c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  priceText: {fileID: 730167177}
+--- !u!114 &1871302806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871302800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0a14569f87b7d74baf280537c2b9b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countUI: {fileID: 793407116}
+--- !u!114 &1871302807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871302800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c872a1a884fbaf248b8f183696b0d50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1881832469
 GameObject:
   m_ObjectHideFlags: 0
@@ -7543,6 +7915,7 @@ GameObject:
   - component: {fileID: 2060241587}
   - component: {fileID: 2060241586}
   - component: {fileID: 2060241589}
+  - component: {fileID: 2060241590}
   m_Layer: 5
   m_Name: Cabbage
   m_TagString: Untagged
@@ -7666,6 +8039,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countUI: {fileID: 703203146}
+--- !u!114 &2060241590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060241584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c872a1a884fbaf248b8f183696b0d50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHover:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2088309183
 GameObject:
   m_ObjectHideFlags: 0
@@ -8295,3 +8683,5 @@ SceneRoots:
   - {fileID: 1674753727}
   - {fileID: 1646974098}
   - {fileID: 1801022991}
+  - {fileID: 972486851}
+  - {fileID: 777322463}

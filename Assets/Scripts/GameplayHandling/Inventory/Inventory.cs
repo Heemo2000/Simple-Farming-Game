@@ -30,23 +30,19 @@ namespace Game.GameplayHandling
 
         public void IncreaseCropCount(CropType cropType)
         {
-            inventoryDataDict[cropType].count++;
+            ++inventoryDataDict[cropType].count;
             OnCropDataModified?.Invoke(cropType, inventoryDataDict[cropType].count);
         }
 
         public void DecreaseCropCount(CropType cropType)
         {
-            inventoryDataDict[cropType].count--;
+            --inventoryDataDict[cropType].count;
             OnCropDataModified?.Invoke(cropType, inventoryDataDict[cropType].count);
         }
 
         private void Awake()
         {
             inventoryDataDict = new Dictionary<CropType, InventoryData>();
-        }
-
-        private void Start()
-        {
             for (int i = 0; i < inventoryData.Length; i++)
             {
                 CropType current = inventoryData[i].cropType;

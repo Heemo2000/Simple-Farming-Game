@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Game.Core;
 using Game.StateMachineHandling;
 using Game.CameraHandling;
 using Unity.Cinemachine;
 using Game.UI;
-
 
 
 namespace Game.GameplayHandling
@@ -69,6 +69,11 @@ namespace Game.GameplayHandling
 
         private void SpawnSelectedCrop(Vector3 position)
         {
+            if(cropSelector.IsInsideButton)
+            {
+                return;
+            }
+
             CropType selectedCropType = cropSelector.SelectedCropType;
             int count = this.inventory.GetCropCount(selectedCropType);
             

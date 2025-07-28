@@ -18,10 +18,6 @@ namespace Game.UI
         private void Awake()
         {
             inventoryUIDict = new Dictionary<CropType, InventoryUIData>();
-        }
-
-        private void Start()
-        {
             foreach (InventoryUIData data in inventoryUIData)
             {
                 inventoryUIDict.Add(data.cropType, data);

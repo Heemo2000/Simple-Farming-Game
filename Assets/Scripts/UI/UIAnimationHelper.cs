@@ -35,6 +35,7 @@ namespace Game.UI
             }
 
             transform.localScale = Vector3.zero;
+            transform.gameObject.SetActive(false);
             OnEnd?.Invoke();
         }
 
