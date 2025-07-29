@@ -18,10 +18,16 @@ namespace Game.GameplayHandling
         public UnityEvent<CropType, float> OnCropPriceDataModified;
         public UnityEvent<float> OnTotalMoneyModified;
 
+        public void SellCrop(CropType cropType)
+        {
+            float sellPrice = buyDataDict[cropType].sellPrice;
+            currentMoney += sellPrice;
+            OnTotalMoneyModified?.Invoke(currentMoney);
+        }
 
         public void BuyCrop(CropType cropType)
         {
-            float price = buyDataDict[cropType].price;
+            float price = buyDataDict[cropType].costPrice;
             if (currentMoney >= price)
             {
                 currentMoney -= price;
@@ -37,7 +43,7 @@ namespace Game.GameplayHandling
             {
                 CropType cropType = pair.Key;
                 BuyCropData data = pair.Value;
-                OnCropPriceDataModified?.Invoke(cropType, data.price);
+                OnCropPriceDataModified?.Invoke(cropType, data.costPrice);
             }
         }
 

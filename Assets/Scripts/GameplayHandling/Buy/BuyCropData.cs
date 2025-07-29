@@ -1,4 +1,4 @@
-
+using UnityEngine;
 
 namespace Game.GameplayHandling
 {
@@ -6,6 +6,9 @@ namespace Game.GameplayHandling
     public class BuyCropData
     {
         public CropType cropType;
-        public float price;
+        [Min(0)]
+        public float costPrice = 1;
+        [Min(0)]
+        public float sellPrice = 1;
     }
 }

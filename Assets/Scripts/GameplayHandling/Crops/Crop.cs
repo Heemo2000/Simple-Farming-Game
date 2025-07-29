@@ -32,6 +32,7 @@ namespace Game.GameplayHandling
 
         public ObjectPool<Crop> CropPool { get => cropPool; set => cropPool = value; }
         public CropType Type { get => type; }
+        
         public void Grow()
         {
             if(growCoroutine == null && isProcessing == false)
@@ -40,7 +41,7 @@ namespace Game.GameplayHandling
             }
         }
 
-        public void Harvest()
+        public bool Harvest()
         {
             if(state == CropState.Harvestable)
             {
@@ -52,7 +53,10 @@ namespace Game.GameplayHandling
                 {
                     Destroy(gameObject);
                 }
+                return true;
             }
+
+            return false;
         }
 
         private IEnumerator GrowForSeconds()

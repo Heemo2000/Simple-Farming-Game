@@ -17,6 +17,7 @@ namespace Game.GameplayHandling
         private Page mainPanel;
         private GameInput input;
         private GameObject gridGraphic;
+        private BuyManager buyManager;
 
 
         private Vector2 moveInput;
@@ -29,6 +30,7 @@ namespace Game.GameplayHandling
             this.mainPanel = controller.MainPanel;
             this.input = controller.GameInput;
             this.gridGraphic = controller.GridGraphic;
+            this.buyManager = controller.BuyManager;
         }
 
         public void OnEnter()
@@ -40,6 +42,7 @@ namespace Game.GameplayHandling
                 this.uiManager.PopPage();
             }
             this.gridGraphic.SetActive(false);
+            this.buyManager.LoadData();
         }
         public void OnUpdate()
         {

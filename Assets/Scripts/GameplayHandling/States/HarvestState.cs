@@ -15,6 +15,7 @@ namespace Game.GameplayHandling
         private GameplayController controller;
         private UIManager uiManager;
         private Page harvestingPanel;
+        private BuyManager buyManager;
 
         private HashSet<Crop> visitedCrops;
         private float currentTime = 0.0f;
@@ -27,6 +28,8 @@ namespace Game.GameplayHandling
             this.gameInput = controller.GameInput;
             this.uiManager = controller.UIManager;
             this.harvestingPanel = controller.HarvestingPanel;
+            this.buyManager = controller.BuyManager;
+
             this.visitedCrops = new HashSet<Crop>(new CropComparer());
             this.detectedColliders = new Collider[Constants.MAX_COLLIDER_COUNT];
         }
@@ -59,7 +62,10 @@ namespace Game.GameplayHandling
                 }
 
                 visitedCrops.Add(crop);
-                crop.Harvest();
+                if(crop.Harvest())
+                {
+                    this.buyManager.SellCrop(crop.Type);
+                }
             }
         }
 
