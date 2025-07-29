@@ -1,7 +1,6 @@
 using UnityEngine;
+using UnityEngine.Events;
 using Game.UI;
-using System.Collections;
-using Game.Core;
 
 namespace Game.GameplayHandling
 {
@@ -19,8 +18,10 @@ namespace Game.GameplayHandling
         private CropType selectedCropType = CropType.None;
         private bool isInsideButton = false;
 
+        public UnityEvent<CropType> OnCropClicked;
         public CropType SelectedCropType { get => selectedCropType; }
         public bool IsInsideButton { get => isInsideButton;}
+
 
         private void SelectCropType(CropType cropType)
         {
@@ -33,6 +34,11 @@ namespace Game.GameplayHandling
             isInsideButton = false;
         }
 
+        private void ClickOnCropType(CropType cropType)
+        {
+            OnCropClicked?.Invoke(cropType);
+        }
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
@@ -43,6 +49,7 @@ namespace Game.GameplayHandling
                 CropType type = data.cropType;
                 data.selectButton.OnHover.AddListener(() => SelectCropType(type));
                 data.selectButton.OnHoverExit.AddListener(MakeIsInsideBoolFalse);
+                data.selectButton.OnClick.AddListener(() => ClickOnCropType(type));
             }
         }
 

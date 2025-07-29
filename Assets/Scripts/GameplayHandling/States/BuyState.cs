@@ -1,6 +1,6 @@
-using UnityEngine;
 using Game.StateMachineHandling;
 using Game.UI;
+
 namespace Game.GameplayHandling
 {
     public class BuyState : IState
@@ -9,6 +9,7 @@ namespace Game.GameplayHandling
         private UIManager uiManager;
         private Page mainPanel;
         private Page buyPanel;
+        private Inventory inventory;
         private BuyManager buyManager;
 
         public BuyState(GameplayController controller)
@@ -17,6 +18,7 @@ namespace Game.GameplayHandling
             this.uiManager = controller.UIManager;
             this.mainPanel = controller.MainPanel;
             this.buyPanel = controller.BuyPanel;
+            this.inventory = controller.Inventory;
             this.buyManager = controller.BuyManager;
         }
 
@@ -24,7 +26,9 @@ namespace Game.GameplayHandling
         {
             this.mainPanel.exitOnNewPagePush = true;
             this.uiManager.PushPage(buyPanel);
+            this.inventory.LoadData();
             this.buyManager.LoadData();
+            this.cropSelector.OnCropClicked.AddListener(BuyCrop);
         }
 
         public void OnUpdate()
@@ -45,6 +49,12 @@ namespace Game.GameplayHandling
         public void OnExit()
         {
             this.uiManager.PopPage();
+            this.cropSelector.OnCropClicked.RemoveListener(BuyCrop);
+        }
+
+        private void BuyCrop(CropType cropType)
+        {
+            this.buyManager.BuyCrop(cropType);
         }
     }
 }
