@@ -9,7 +9,12 @@ namespace Game.UI
 
         public void SetTimeText(int minutes, int seconds)
         {
-            timerUI.text = minutes.ToString() + ":" + seconds.ToString();
+            string secondsString = seconds.ToString();
+            if(seconds >= 0 && seconds <= 9)
+            {
+                secondsString = "0" + secondsString;
+            }
+            timerUI.text = minutes.ToString() + ":" + secondsString;
         }
         private void Awake()
         {
