@@ -15,6 +15,7 @@ namespace Game.GameplayHandling
         
         public GameOverState(GameplayController controller)
         {
+            this.buyManager = controller.BuyManager;
             this.uiManager = controller.UIManager;
             this.timePanel = controller.TimePanel;
             this.overallMoneyPanel = controller.OverallMoneyPanel;

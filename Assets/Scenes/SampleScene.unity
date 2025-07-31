@@ -5809,6 +5809,7 @@ GameObject:
   - component: {fileID: 1449053626}
   - component: {fileID: 1449053625}
   - component: {fileID: 1449053624}
+  - component: {fileID: 1449053627}
   m_Layer: 5
   m_Name: Game Over Panel
   m_TagString: Untagged
@@ -5905,6 +5906,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1449053622}
   m_CullTransparentMesh: 1
+--- !u!114 &1449053627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449053622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a95b98f2883a58479c783555c373a19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalMoneyRemainingText: {fileID: 2064417130}
 --- !u!1 &1449757486
 GameObject:
   m_ObjectHideFlags: 0
@@ -6463,6 +6477,7 @@ MonoBehaviour:
   overallMoneyPanel: {fileID: 45310006}
   gameOverPanel: {fileID: 1449053624}
   timeUI: {fileID: 114173694}
+  gameOverUI: {fileID: 1449053627}
   wateringTime: 10
   harvestTime: 10
   wateringRadius: 4

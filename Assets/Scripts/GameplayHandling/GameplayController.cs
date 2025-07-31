@@ -155,11 +155,12 @@ namespace Game.GameplayHandling
             timer = new Timer(minutes, seconds);
 
             stateMachine.AddTransition(playerState, plantingState, new FuncPredicate(() => currentState == GameplayStates.Planting));
+            stateMachine.AddAnyTransition(gameOverState, new FuncPredicate(() => currentState == GameplayStates.GameOver));
             stateMachine.AddAnyTransition(playerState, new FuncPredicate(() => currentState == GameplayStates.Normal));
             stateMachine.AddAnyTransition(wateringState, new TimePredicate(wateringTime, () => currentState == GameplayStates.Watering, ChangeToNormalState));
             stateMachine.AddAnyTransition(harvestState, new TimePredicate(harvestTime, () => currentState == GameplayStates.Harvest, ChangeToNormalState));
             stateMachine.AddAnyTransition(buyState, new FuncPredicate(()=> currentState == GameplayStates.Buy));
-            stateMachine.AddAnyTransition(gameOverState, new FuncPredicate(() => currentState == GameplayStates.GameOver));
+            
         }
 
 
