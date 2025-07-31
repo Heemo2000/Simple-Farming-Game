@@ -59,6 +59,7 @@ MonoBehaviour:
     graphics: {fileID: 6948634626240293732}
   punchAnimScale: 1.2
   punchAnimDuration: 0.3
+  harvestAnimScaleDuration: 0.3
 --- !u!65 &6513629633599720955
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -37,9 +37,9 @@ namespace Game.GameplayHandling
         {
             this.cameraManager.MakeCameraImportant(this.playerCamera);
             this.mainPanel.exitOnNewPagePush = true;
-            if(this.uiManager.PageCount > 1)
+            if(!this.uiManager.IsPageInStack(this.mainPanel))
             {
-                this.uiManager.PopPage();
+                this.uiManager.PushPage(this.mainPanel);
             }
             this.gridGraphic.SetActive(false);
             this.buyManager.LoadData();

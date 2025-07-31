@@ -63,8 +63,10 @@ namespace Game.GameplayHandling
 
         public void OnExit()
         {
+
             this.gameInput.OnPositionClicked -= SpawnSelectedCrop;
             this.gridGraphic.SetActive(false);
+            this.uiManager.PopPage();
         }
 
         private void SpawnSelectedCrop(Vector3 position)

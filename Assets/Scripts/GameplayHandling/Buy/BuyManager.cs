@@ -18,6 +18,8 @@ namespace Game.GameplayHandling
         public UnityEvent<CropType, float> OnCropPriceDataModified;
         public UnityEvent<float> OnTotalMoneyModified;
 
+        public float CurrentMoney { get => currentMoney;}
+
         public void SellCrop(CropType cropType)
         {
             float sellPrice = buyDataDict[cropType].sellPrice;

@@ -24,11 +24,16 @@ namespace Game.GameplayHandling
         [Min(0.1f)]
         private float punchAnimDuration = 0.3f;
 
+        [SerializeField]
+        [Min(0.1f)]
+        private float harvestAnimScaleDuration = 0.1f;
+
         private ObjectPool<Crop> cropPool = null;
         private int currentStageIndex = -1;
         private Coroutine growCoroutine = null;
         private bool isProcessing = false;
         private CropState state = CropState.None;
+        private Collider cropCollider;
 
         public ObjectPool<Crop> CropPool { get => cropPool; set => cropPool = value; }
         public CropType Type { get => type; }
@@ -45,18 +50,27 @@ namespace Game.GameplayHandling
         {
             if(state == CropState.Harvestable)
             {
-                if(cropPool != null && ServiceLocator.ForSceneOf(this).TryGetService<CropManager>(out CropManager manager))
-                {
-                    manager.DespawnCrop(this);
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
+                StartCoroutine(HarvestInSeconds());   
                 return true;
             }
 
             return false;
+        }
+
+        private IEnumerator HarvestInSeconds()
+        {
+            cropCollider.enabled = false;
+            Tween tween = transform.DOScale(0.01f, harvestAnimScaleDuration);
+            yield return tween.WaitForCompletion();
+
+            if (cropPool != null && ServiceLocator.ForSceneOf(this).TryGetService<CropManager>(out CropManager manager))
+            {
+                manager.DespawnCrop(this);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
         private IEnumerator GrowForSeconds()
@@ -80,7 +94,7 @@ namespace Game.GameplayHandling
             Tween tween = null;
             if (lastStage != null)
             {
-                tween = lastStage.graphics.transform.DOScale(0.01f, 0.2f);
+                tween = lastStage.graphics.transform.DOScale(1.0f, 0.01f);
                 yield return tween.WaitForCompletion();
                 lastStage.graphics.SetActive(false);
             }
@@ -110,6 +124,7 @@ namespace Game.GameplayHandling
         {
             currentStageIndex = -1;
             state = CropState.None;
+            cropCollider = GetComponent<Collider>();
         }
 
         private void Start()
@@ -121,6 +136,9 @@ namespace Game.GameplayHandling
                     stage.graphics.SetActive(false);
                 }
             }
+            transform.localScale = Vector3.one * 0.01f;
+            transform.DOScale(Vector3.one, 0.1f);
+            cropCollider.enabled = true;
         }
 
         public override bool Equals(object obj)

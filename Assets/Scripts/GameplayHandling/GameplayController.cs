@@ -25,7 +25,13 @@ namespace Game.GameplayHandling
         [SerializeField] private Page wateringPanel;
         [SerializeField] private Page harvestingPanel;
         [SerializeField] private Page buyPanel;
+        [SerializeField] private Page timePanel;
+        [SerializeField] private Page overallMoneyPanel;
+        [SerializeField] private Page gameOverPanel;
+        [SerializeField] private TimeUI timeUI;
+        [SerializeField] private GameOverUI gameOverUI;
 
+ 
         [Header("Time settings: ")]
         [Min(0.1f)]
         [SerializeField] private float wateringTime = 3.0f;
@@ -44,6 +50,12 @@ namespace Game.GameplayHandling
         [Min(0.1f)]
         [SerializeField] private float harvestingInterval = 0.1f;
 
+        [Header("Countdown Timer Settings: ")]
+        [Min(0)]
+        [SerializeField] private int minutes = 1;
+        [Min(1)]
+        [SerializeField] private int seconds = 1;
+
         [Header("Other stuff: ")]
         [SerializeField] private GameInput gameInput;
         [SerializeField] private Human playerHuman;
@@ -57,6 +69,7 @@ namespace Game.GameplayHandling
         [SerializeField] private Inventory inventory;
         [SerializeField] private BuyManager buyManager;
         [SerializeField] private GameObject gridGraphic;
+        
 
         private StateMachine stateMachine;
 
@@ -65,7 +78,8 @@ namespace Game.GameplayHandling
         private WateringState wateringState;
         private HarvestState harvestState;
         private BuyState buyState;
-
+        private GameOverState gameOverState;
+        private Timer timer;
         private GameplayStates currentState = GameplayStates.None;
 
         public GameInput GameInput { get => gameInput; }
@@ -84,12 +98,16 @@ namespace Game.GameplayHandling
         public UIManager UIManager { get => uiManager; }
         public Page WateringPanel { get => wateringPanel;}
         public Page HarvestingPanel { get => harvestingPanel;}
+        public Page GameOverPanel { get => gameOverPanel; }
         public Inventory Inventory { get => inventory; }
         public Page MainPanel { get => mainPanel;}
         public Page PlantingPanel { get => plantingPanel; }
         public Page BuyPanel { get => buyPanel;}
+        public Page TimePanel { get => timePanel; }
+        public Page OverallMoneyPanel { get => overallMoneyPanel; }
         public GameObject GridGraphic { get => gridGraphic;}
         public BuyManager BuyManager { get => buyManager;}
+        public GameOverUI GameOverUI { get => gameOverUI; }
 
         private void ChangeToNormalState()
         {
@@ -119,6 +137,11 @@ namespace Game.GameplayHandling
             Debug.Log("Changing state to buying.");
             currentState = GameplayStates.Buy;
         }
+
+        private void ChangeToGameOverState()
+        {
+            currentState = GameplayStates.GameOver;
+        }
         private void Awake()
         {
             currentState = GameplayStates.Normal;
@@ -128,18 +151,28 @@ namespace Game.GameplayHandling
             wateringState = new WateringState(this);
             harvestState = new HarvestState(this);
             buyState = new BuyState(this);
+            gameOverState = new GameOverState(this);
+            timer = new Timer(minutes, seconds);
 
             stateMachine.AddTransition(playerState, plantingState, new FuncPredicate(() => currentState == GameplayStates.Planting));
             stateMachine.AddAnyTransition(playerState, new FuncPredicate(() => currentState == GameplayStates.Normal));
             stateMachine.AddAnyTransition(wateringState, new TimePredicate(wateringTime, () => currentState == GameplayStates.Watering, ChangeToNormalState));
             stateMachine.AddAnyTransition(harvestState, new TimePredicate(harvestTime, () => currentState == GameplayStates.Harvest, ChangeToNormalState));
             stateMachine.AddAnyTransition(buyState, new FuncPredicate(()=> currentState == GameplayStates.Buy));
+            stateMachine.AddAnyTransition(gameOverState, new FuncPredicate(() => currentState == GameplayStates.GameOver));
         }
 
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            overallMoneyPanel.OnPostPushAction.AddListener(()=> timer.StartTimer(this));
+            timer.OnTimeModified += timeUI.SetTimeText;
+            timer.OnTimeUp += ChangeToGameOverState;
+
+            uiManager.PushPage(timePanel);
+            uiManager.PushPage(overallMoneyPanel);
+
             plantingBtn.onClick.AddListener(ChangeToPlantingState);
             wateringBtn.onClick.AddListener(ChangeToWateringState);
             harvestBtn.onClick.AddListener(ChangeToHarvestingState);
@@ -149,6 +182,7 @@ namespace Game.GameplayHandling
             goBackFromBuyBtn.onClick.AddListener(ChangeToNormalState);
 
             DOTween.Init();
+            
             stateMachine.SetState(playerState);
             Application.targetFrameRate = 60;
         }
@@ -186,6 +220,13 @@ namespace Game.GameplayHandling
         private void OnDestroy()
         {
             plantingBtn.onClick.RemoveListener(ChangeToPlantingState);
+            wateringBtn.onClick.RemoveListener(ChangeToWateringState);
+            harvestBtn.onClick.RemoveListener(ChangeToHarvestingState);
+            buyBtn.onClick.RemoveListener(ChangeToBuyState);
+
+            overallMoneyPanel.OnPostPushAction.RemoveAllListeners();
+            timer.OnTimeModified -= timeUI.SetTimeText;
+            timer.OnTimeUp -= ChangeToGameOverState;
         }
     }
 }

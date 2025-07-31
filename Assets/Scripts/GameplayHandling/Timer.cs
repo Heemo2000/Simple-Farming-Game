@@ -1,24 +1,31 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Game.GameplayHandling
 {
-    public class Timer : MonoBehaviour
+    public class Timer
     {
-        [Range(0,12)]
-        [SerializeField] private int minutes = 3;
-        [Range(0, 59)]
-        [SerializeField] private int seconds = 0;
-
-        public UnityEvent<int, int> OnTimeModified;
-        public UnityEvent OnTimeUp;
+        public Action<int, int> OnTimeModified;
+        public Action OnTimeUp;
 
         private TimeSpan remainingTime;
         private TimeSpan amountToSubtract;
 
-        private IEnumerator StartTimer()
+        public TimeSpan RemainingTime { get => remainingTime; }
+
+        public Timer(int minutes, int seconds)
+        {
+            remainingTime = new TimeSpan(0, minutes, seconds);
+            amountToSubtract = new TimeSpan(0, 0, 1);
+        }
+
+        public void StartTimer(MonoBehaviour mb)
+        {
+            mb.StartCoroutine(StartTimerCoroutine());
+        }
+
+        private IEnumerator StartTimerCoroutine()
         {
             while(remainingTime.TotalSeconds > 0)
             {
@@ -27,18 +34,8 @@ namespace Game.GameplayHandling
                 yield return new WaitForSeconds(1.0f);
             }
 
+            OnTimeModified?.Invoke(remainingTime.Minutes, remainingTime.Seconds);
             OnTimeUp?.Invoke();
-        }
-
-        private void Awake()
-        {
-            remainingTime = new TimeSpan(0, minutes, seconds);
-            amountToSubtract = new TimeSpan(0, 0, 1);
-        }
-
-        private void Start()
-        {
-            StartCoroutine(StartTimer());
         }
     }
 }

@@ -9,6 +9,7 @@ namespace Game.GameplayHandling
         Planting,
         Watering,
         Harvest,
-        Buy
+        Buy,
+        GameOver
     }
 }
