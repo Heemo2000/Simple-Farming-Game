@@ -12,6 +12,7 @@ namespace Game.GameplayHandling
         private Page overallMoneyPanel;
         private Page gameOverPanel;
         private GameOverUI gameOverUI;
+        private PlayerController playerController;
         
         public GameOverState(GameplayController controller)
         {
@@ -21,6 +22,7 @@ namespace Game.GameplayHandling
             this.overallMoneyPanel = controller.OverallMoneyPanel;
             this.gameOverPanel = controller.GameOverPanel;
             this.gameOverUI = controller.GameOverUI;
+            this.playerController = controller.PlayerHuman;
         }
 
         public void OnEnter()
@@ -35,7 +37,7 @@ namespace Game.GameplayHandling
 
         public void OnUpdate()
         {
-            
+            this.playerController.HandleMovement(Vector2.zero);
         }
 
         public void OnFixedUpdate()

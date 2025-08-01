@@ -58,7 +58,7 @@ namespace Game.GameplayHandling
 
         [Header("Other stuff: ")]
         [SerializeField] private GameInput gameInput;
-        [SerializeField] private Human playerHuman;
+        [SerializeField] private PlayerController playerHuman;
         [SerializeField] private CropManager cropManager;
         [SerializeField] private CropSelector plantingCropSelector;
         [SerializeField] private CropSelector buyingCropSelector;
@@ -83,7 +83,7 @@ namespace Game.GameplayHandling
         private GameplayStates currentState = GameplayStates.None;
 
         public GameInput GameInput { get => gameInput; }
-        public Human PlayerHuman { get => playerHuman; }
+        public PlayerController PlayerHuman { get => playerHuman; }
         public CropManager CropManager { get => cropManager; }
         public CropSelector PlantingCropSelector { get => plantingCropSelector; }
         public CropSelector BuyingCropSelector { get => buyingCropSelector; }

@@ -48625,17 +48625,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: -0.000000059604645, y: 1, z: 0.000000059604645}
---- !u!114 &1343156738 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9012743614400381854, guid: 9e188d62d4f35b048ad9a89567dc342f, type: 3}
-  m_PrefabInstance: {fileID: 8662415421859438888}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0aca46294bb43d40bd06e058d5c4608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1343156740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 878387429823749497, guid: 9e188d62d4f35b048ad9a89567dc342f, type: 3}
@@ -52343,7 +52332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1449053623
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60890,7 +60879,7 @@ MonoBehaviour:
   minutes: 3
   seconds: 1
   gameInput: {fileID: 1449757487}
-  playerHuman: {fileID: 1343156738}
+  playerHuman: {fileID: 1997948529}
   cropManager: {fileID: 1674753729}
   plantingCropSelector: {fileID: 558069222}
   buyingCropSelector: {fileID: 274008943}
@@ -74315,6 +74304,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: -0.000000059604645, y: 1, z: 0.000000059604645}
+--- !u!114 &1997948529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3119183130001722441, guid: 9e188d62d4f35b048ad9a89567dc342f, type: 3}
+  m_PrefabInstance: {fileID: 8662415421859438888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11479357bcf5074fba30fac1857b07d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1999403806
 PrefabInstance:
   m_ObjectHideFlags: 0

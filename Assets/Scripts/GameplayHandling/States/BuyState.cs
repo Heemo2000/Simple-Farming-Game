@@ -1,3 +1,4 @@
+using UnityEngine;
 using Game.StateMachineHandling;
 using Game.UI;
 
@@ -11,6 +12,7 @@ namespace Game.GameplayHandling
         private Page buyPanel;
         private Inventory inventory;
         private BuyManager buyManager;
+        private PlayerController playerController;
 
         public BuyState(GameplayController controller)
         {
@@ -20,6 +22,7 @@ namespace Game.GameplayHandling
             this.buyPanel = controller.BuyPanel;
             this.inventory = controller.Inventory;
             this.buyManager = controller.BuyManager;
+            this.playerController = controller.PlayerHuman;
         }
 
         public void OnEnter()
@@ -33,7 +36,7 @@ namespace Game.GameplayHandling
 
         public void OnUpdate()
         {
-
+            this.playerController.HandleMovement(Vector2.zero);
         }
 
         public void OnFixedUpdate()

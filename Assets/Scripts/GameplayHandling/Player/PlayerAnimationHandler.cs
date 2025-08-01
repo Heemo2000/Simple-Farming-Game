@@ -1,19 +1,26 @@
 using UnityEngine;
+using Game.Core;
 
-namespace Game
+namespace Game.GameplayHandling
 {
     public class PlayerAnimationHandler : MonoBehaviour
     {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        private Animator animator;
+        private int moveInputHash = -1;
+
+        public void HandleMoveAnimInput(float moveInput)
         {
-        
+            animator.SetFloat(moveInputHash, moveInput, Time.deltaTime, Time.deltaTime);
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Awake()
         {
-        
+            animator = GetComponent<Animator>();
+        }
+
+        private void Start()
+        {
+            moveInputHash = Animator.StringToHash(Constants.MOVE_INPUT_ANIM_PARAM);
         }
     }
 }

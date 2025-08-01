@@ -10,7 +10,7 @@ namespace Game.GameplayHandling
 {
     public class NormalState : IState
     {
-        private Human playerHuman;
+        private PlayerController playerController;
         private CameraManager cameraManager;
         private CinemachineCamera playerCamera;
         private UIManager uiManager;
@@ -23,7 +23,7 @@ namespace Game.GameplayHandling
         private Vector2 moveInput;
         public NormalState(GameplayController controller)
         {
-            this.playerHuman = controller.PlayerHuman;
+            this.playerController = controller.PlayerHuman;
             this.cameraManager = controller.CameraManager;
             this.playerCamera = controller.PlayerCamera;
             this.uiManager = controller.UIManager;
@@ -52,7 +52,7 @@ namespace Game.GameplayHandling
 
         public void OnFixedUpdate()
         {
-            playerHuman.HandleMovement(moveInput);
+            this.playerController.HandleMovement(moveInput);
         }
 
         public void OnLateUpdate()
@@ -63,7 +63,7 @@ namespace Game.GameplayHandling
         public void OnExit()
         {
             moveInput = Vector2.zero;
-            playerHuman.HandleMovement(moveInput);
+            this.playerController.HandleMovement(moveInput);
         }
         
     }

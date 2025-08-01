@@ -21,6 +21,7 @@ namespace Game.GameplayHandling
         private GameInput gameInput;
         private Inventory inventory;
         private GameObject gridGraphic;
+        private PlayerController playerController;
         
         public PlantingState(GameplayController controller)
         {
@@ -34,6 +35,7 @@ namespace Game.GameplayHandling
             this.gameInput = controller.GameInput;
             this.inventory = controller.Inventory;
             this.gridGraphic = controller.GridGraphic;
+            this.playerController = controller.PlayerHuman;
         }
 
         public void OnEnter()
@@ -48,7 +50,7 @@ namespace Game.GameplayHandling
 
         public void OnUpdate()
         {
-            
+            this.playerController.HandleMovement(Vector2.zero);
         }
 
         public void OnFixedUpdate()

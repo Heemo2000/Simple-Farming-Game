@@ -8,7 +8,7 @@ namespace Game.GameplayHandling
 {
     public class WateringState : IState
     {
-        private Human playerHuman;
+        private PlayerController playerController;
         private GameInput gameInput;
         private Vector2 moveInput;
         private GameplayController controller;
@@ -21,7 +21,7 @@ namespace Game.GameplayHandling
         public WateringState(GameplayController controller)
         {
             this.controller = controller;
-            this.playerHuman = controller.PlayerHuman;
+            this.playerController = controller.PlayerHuman;
             this.gameInput = controller.GameInput;
             this.uiManager = controller.UIManager;
             this.wateringPanel = controller.WateringPanel;
@@ -44,7 +44,7 @@ namespace Game.GameplayHandling
             }
             this.visitedCrops.Clear();
             currentTime = 0.0f;
-            int count = Physics.OverlapSphereNonAlloc(this.playerHuman.transform.position, this.controller.WateringRadius, detectedColliders, this.controller.CropLayerMask.value);
+            int count = Physics.OverlapSphereNonAlloc(this.playerController.transform.position, this.controller.WateringRadius, detectedColliders, this.controller.CropLayerMask.value);
             //Debug.Log("Crop count: " + count);
             for (int i = 0; i < count; i++)
             {
@@ -62,7 +62,7 @@ namespace Game.GameplayHandling
 
         public void OnFixedUpdate()
         {
-            playerHuman.HandleMovement(moveInput);
+            this.playerController.HandleMovement(moveInput);
         }
 
         public void OnLateUpdate()
