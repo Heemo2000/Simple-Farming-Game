@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.CharacterHandling
 {
@@ -20,6 +21,9 @@ namespace Game.CharacterHandling
         [Header("Gravity Settings: ")]
         [Min(1.0f)]
         [SerializeField] private float gravity = 10.0f;
+
+        [Header("Event Settings: ")]
+        public UnityEvent<Vector2> OnMove;
         
         private float velocityY = 0.0f;
         private float currentVelocityY = 0.0f;
@@ -54,6 +58,8 @@ namespace Game.CharacterHandling
             Vector3 upVector = Vector3.up * velocityY;
 
             controller.Move((horizontalVector + upVector) * Time.fixedDeltaTime);
+
+            OnMove?.Invoke(moveInput);
 
             Quaternion requiredRotation = (isMoving) ? Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(horizontalVector), rotateTransitioningSpeed * Time.fixedDeltaTime) : transform.rotation;
             transform.rotation = requiredRotation;
